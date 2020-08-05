@@ -1,0 +1,9 @@
+.customcontainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 10px 0 10px;
+}
+
+.blackColor{
+  color:rgb(50, 50, 50)
+}
