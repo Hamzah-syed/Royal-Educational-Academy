@@ -4,7 +4,7 @@ include("../layout/layout.php");
 
 //demo session
 $_SESSION["faculty_id"] = 1;
-$_SESSION["student_id"] = 19;
+$_SESSION["student_id"] = 23;
 $_SESSION["roleId"] = 3;
 $_SESSION["batchId"] = 7;
 
@@ -36,13 +36,13 @@ if (isset($_POST['asgSubmit'])) {
 
        // if ($nameValidation && $emailValidation && $passwordValidation) {
 
-       $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk) VALUES('$modifiedName',2020-08-05 , '$_SESSION[student_id]','$AsgValue')";
+       $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk,subAs_batch_fk ) VALUES('$modifiedName',2020-08-05 , '$_SESSION[student_id]','$AsgValue','$_SESSION[batchId]')";
        $fire = mysqli_query($con, $SubmitasignmentQuery) or die("data not inserted " . mysqli_error($con));
 
        if ($fire) {
            echo '<script type="text/javascript">alert("assignment submitted successfully")</script>';
            header("Location:./submitAsg.php");
-           session_unset( $_SESSION['AsgValue']);
+           
        }
    }
 }

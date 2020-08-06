@@ -3,8 +3,10 @@ include("../database_connection.php");
 include("../layout/layout.php");
 
 //demo session
-$_SESSION["faculty_id"] = 1;
+$_SESSION["faculty_id"] = 2;
 $_SESSION["roleId"] = 1;
+// will remove
+$_SESSION["batchId"] = 7;
 
 
 if ($_SESSION["roleId"] === 3) {
@@ -77,7 +79,7 @@ if (isset($_GET['as_del'])) {
                 <?php
 
                 if ($_SESSION["roleId"] == 1) {
-                    $AllAsgsQuery = "SELECT students_tbl.std_id, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file  FROM   students_tbl, submitted_asg_tbl";
+                    $AllAsgsQuery = "SELECT submitted_asg_tbl.subAs_id, assignments_tbl.as_title, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file  FROM   students_tbl, submitted_asg_tbl,assign_assignment_tbl,assignments_tbl WHERE students_tbl.std_id =submitted_asg_tbl.subAs_student_fk AND assign_assignment_tbl.asg_id =submitted_asg_tbl.subAs_assignaAssignment_fk  AND assign_assignment_tbl.asg_batch_fk =  $_SESSION[batchId] AND assignments_tbl.as_id =assign_assignment_tbl.asg_assignment_fk  AND assignments_tbl.as_faculty_fk = $_SESSION[faculty_id]  ";
                 } else if ($_SESSION["roleId"] == 2) {
                     $AllAsgsQuery = "SELECT assignments_tbl.as_id ,assignments_tbl.as_title, assignments_tbl.as_file_path, assignments_tbl.as_faculty_fk, users_tbl.u_name,  subject_tbl.subject_name FROM assignments_tbl , faculty_tbl , users_tbl,subject_tbl WHERE  faculty_tbl.fac_id = assignments_tbl.as_faculty_fk  AND users_tbl.u_id = faculty_tbl.fac_info_fk AND subject_tbl.subject_id = assignments_tbl.as_subject_fk AND assignments_tbl.as_faculty_fk = '$_SESSION[faculty_id]' ";
                 }
@@ -91,9 +93,10 @@ if (isset($_GET['as_del'])) {
 
                     while ($student = mysqli_fetch_assoc($fire)) { ?>
                         <tr>
-                            <th scope="row"><?php echo $student['std_id'] ?></th>
+                            <th scope="row"><?php echo $student['subAs_id'] ?></th>
                             <td><?php echo $student['std_rollNumber'] ?></td>
                             <td><?php echo $student['subAs_file'] ?></td>
+                            <td><?php echo $student['as_title'] ?></td>
                             <!-- <td><a href="<?php echo "../assets/asg_files/" . $student['as_file_path'] ?>" target="_blank"> <?php echo $student['as_file_path'] ?></a></td> -->
                             <!-- <td><?php echo $student['subject_name'] ?></td>
                             <td><?php echo $student['u_name'] ?></td> -->
@@ -112,7 +115,7 @@ if (isset($_GET['as_del'])) {
                 } else { ?>
                     <tr>
 
-                        <h3 class="py-4">No Data Found!. Insert Data </h3>
+                        <h3 class="py-4">No Data Found! </h3>
 
 
                     </tr>
