@@ -69,7 +69,6 @@ if (isset($_GET['as_del'])) {
                     <th scope="col">Faculty</th>
                     <th scope="col"></th>
 
-                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>

@@ -36,7 +36,7 @@ if (isset($_POST['asgSubmit'])) {
 
        // if ($nameValidation && $emailValidation && $passwordValidation) {
 
-       $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk,subAs_batch_fk ) VALUES('$modifiedName',2020-08-05 , '$_SESSION[student_id]','$AsgValue','$_SESSION[batchId]')";
+       $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk,subAs_batch_fk ) VALUES('$modifiedName',CURDATE() , '$_SESSION[student_id]','$AsgValue','$_SESSION[batchId]')";
        $fire = mysqli_query($con, $SubmitasignmentQuery) or die("data not inserted " . mysqli_error($con));
 
        if ($fire) {
@@ -72,13 +72,6 @@ if (isset($_POST['asgSubmit'])) {
         <h1 class="text-center blackColor" style="margin-bottom:50px;">Submit Assignment</h1>
 
 
-
-
-
-
-
-     
-       
             <form class="py-2" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
            
                 <p class="text-warning" ><b>note: Assignment should be in .pdf format</b></p>
