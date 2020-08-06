@@ -14,7 +14,7 @@ if (isset($_POST['SearchAsgByName'])) {
         header("Location:batchAssignments.php");
     } else {
 
-        echo $searchValue = $_POST['searchByBatch'];
+         $searchValue = $_POST['searchByBatch'];
     }
 }
 
@@ -109,7 +109,7 @@ if (!isset($_SESSION["batchId"])) { ?>
                     <option value="notSet" selected> Select Batch </option>;
                     <?php
                     $sql = mysqli_query($con, "SELECT b_id, b_code From batch_tbl ");
-                    $batch = mysqli_query($con, "SELECT b_id From batch_tbl WHERE b_id = $searchValue");
+                  
                     $row = mysqli_num_rows($sql);
                     while ($row = mysqli_fetch_assoc($sql)) { ?>
     

@@ -120,7 +120,7 @@ if ( $nameValidation && $emailValidation && $passwordValidation) {
 
         <div class="form-group">
             <label for="exampleInputPassword1">Roll Number</label>
-            <input type="password" name="std_rollNum" id="std_rollNum" class="form-control" placeholder="Roll Number">
+            <input type="text" name="std_rollNum" id="std_rollNum" class="form-control" placeholder="Roll Number">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>

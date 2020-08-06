@@ -22,10 +22,10 @@ if (isset($_POST['asg_assign'])) {
         $assignasignmentQuery = "INSERT INTO assign_assignment_tbl(asg_status,asg_due_date,asg_upload_date, asg_batch_fk,asg_assignment_fk) VALUES( 1,'$asgEndDate','$asgStartD','$asgBatch','$asgAssignment')";
         $fire = mysqli_query($con, $assignasignmentQuery) or die("data not inserted " . mysqli_error($con));
 
-        if ($fire) {
-            echo '<script type="text/javascript">alert("assignment Assigned successfully")</script>';
+        // if ($fire) {
+        //     echo '<script type="text/javascript">alert("assignment Assigned successfully")</script>';
            
-        }
+        // }
     }
 
 
