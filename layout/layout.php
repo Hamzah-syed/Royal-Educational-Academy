@@ -94,11 +94,26 @@
           <h6 class="collapse-header">Assignments Details:</h6>
           <a class="collapse-item" href="./assignment.php">Assignments</a>
           <a class="collapse-item" href="./add_assignment.php">Add Assignment</a>
+          <a class="collapse-item" href="./submitAsg.php">Submit Assignment</a>
           
           <div class="collapse-divider"></div>
           <h6 class="collapse-header">Assign Assignments:</h6>
           <a class="collapse-item" href="./assignedAssignment.php">Assign Assignments</a>
-          <a class="collapse-item" href="./batchAssignments">Batch Assignments</a>
+          <a class="collapse-item" href="./batchAssignments.php">Batch Assignments</a>
+          <a class="collapse-item" href="./submittedAsgList.php">Submitted Assignments</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-chalkboard-teacher"></i>
+        <span>Batches</span>
+      </a>
+      <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Batches</h6>
+          <a class="collapse-item" href="./batches.php">All Batches</a>
+          <a class="collapse-item" href="./addBatch.php">Add Batch</a>
         </div>
       </div>
     </li>

@@ -1,6 +1,6 @@
 <?php
 include("../database_connection.php");
-include("../layout/layout.php");
+
 
 //demo session
 $_SESSION["faculty_id"] = 1;
@@ -11,40 +11,39 @@ $_SESSION["batchId"] = 7;
 
 
 if (isset($_POST['asgSubmit'])) {
-   $AsgValue = $_POST['assignmentSelected'];
-   
+    $AsgValue = $_POST['assignmentSelected'];
 
 
-   //file
-   $asFileName = $_FILES['asgSubmit_file']['name'];
-   //rplace space with "_"
-   $asFileName = preg_replace("/\s+/", "_", $asFileName);
-   $asFileTempName = $_FILES['asgSubmit_file']['tmp_name'];
-   $asFileSize = $_FILES['asgSubmit_file']['size'];
-   $asFileType = $_FILES['asgSubmit_file']['type'];
-   //for extension
-   $asFileExt = pathinfo($asFileName, PATHINFO_EXTENSION);
-   //for name without extension
-   $asFileName = pathinfo($asFileName, PATHINFO_FILENAME);
 
-   $modifiedName =  $asFileName . date("mjYHis") . "." . $asFileExt;
-   $FinalFilePath = "../assets/asgSubmitFiles/" . $modifiedName;
-   $upload = move_uploaded_file($asFileTempName, $FinalFilePath);
+    //file
+    $asFileName = $_FILES['asgSubmit_file']['name'];
+    //rplace space with "_"
+    $asFileName = preg_replace("/\s+/", "_", $asFileName);
+    $asFileTempName = $_FILES['asgSubmit_file']['tmp_name'];
+    $asFileSize = $_FILES['asgSubmit_file']['size'];
+    $asFileType = $_FILES['asgSubmit_file']['type'];
+    //for extension
+    $asFileExt = pathinfo($asFileName, PATHINFO_EXTENSION);
+    //for name without extension
+    $asFileName = pathinfo($asFileName, PATHINFO_FILENAME);
 
-   //demo date For Now
-   if ($upload) {
+    $modifiedName =  $asFileName . date("mjYHis") . "." . $asFileExt;
+    $FinalFilePath = "../assets/asgSubmitFiles/" . $modifiedName;
+    $upload = move_uploaded_file($asFileTempName, $FinalFilePath);
 
-       // if ($nameValidation && $emailValidation && $passwordValidation) {
+    //demo date For Now
+    if ($upload) {
 
-       $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk,subAs_batch_fk ) VALUES('$modifiedName',CURDATE() , '$_SESSION[student_id]','$AsgValue','$_SESSION[batchId]')";
-       $fire = mysqli_query($con, $SubmitasignmentQuery) or die("data not inserted " . mysqli_error($con));
+        // if ($nameValidation && $emailValidation && $passwordValidation) {
 
-       if ($fire) {
-           echo '<script type="text/javascript">alert("assignment submitted successfully")</script>';
-           header("Location:./submitAsg.php");
-           
-       }
-   }
+        $SubmitasignmentQuery = "INSERT INTO submitted_asg_tbl(subAs_file,subAs_date, subAs_student_fk,subAs_assignaAssignment_fk,subAs_batch_fk ) VALUES('$modifiedName',CURDATE() , '$_SESSION[student_id]','$AsgValue','$_SESSION[batchId]')";
+        $fire = mysqli_query($con, $SubmitasignmentQuery) or die("data not inserted " . mysqli_error($con));
+
+        if ($fire) {
+            echo '<script type="text/javascript">alert("assignment submitted successfully")</script>';
+            header("Location:./submitAsg.php");
+        }
+    }
 }
 
 
@@ -63,21 +62,23 @@ if (isset($_POST['asgSubmit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css -->
     <link rel="stylesheet" href="../assets/css/main.css">
-    <title>Batch Assignments</title>
+    <title>Submit Assignments</title>
 
 </head>
 
 <body>
-    <div class="customcontainer  table-responsive">
-        <h1 class="text-center blackColor" style="margin-bottom:50px;">Submit Assignment</h1>
+    <div id="wrapper">
+        <?php include '../layout/layout.php' ?>
+        <div class="customcontainer  table-responsive">
+            <h1 class="text-center blackColor" style="margin-bottom:50px;">Submit Assignment</h1>
 
 
             <form class="py-2" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" enctype="multipart/form-data">
-           
-                <p class="text-warning" ><b>note: Assignment should be in .pdf format</b></p>
+
+                <p class="text-warning"><b>note: Assignment should be in .pdf format</b></p>
                 <div class="form-group  ">
                     <label for="exampleInputbatch" class="">
-                       Select Assignment
+                        Select Assignment
                     </label>
                     <select name="assignmentSelected" id="assignmentSelected" class="form-control" required>
 
@@ -106,34 +107,15 @@ if (isset($_POST['asgSubmit'])) {
 
 
 
-                <button type="submit"  name="asgSubmit" id="asgSubmit" class="btn btn-success mt-1 px-4">Submit</button>
+                <button type="submit" name="asgSubmit" id="asgSubmit" class="btn btn-success mt-1 px-4">Submit</button>
             </form>
 
 
-        
 
 
+
+        </div>
     </div>
 </body>
 
 </html>
-
-<!-- not avilabe -->
-
-<!-- <?php
-        if ($student['asg_status'] == 1) { ?>
-
-                                        <a href="<?php
-                                                    $_SERVER['PHP_SELF']
-                                                    ?> ?statusExpire=<?php echo  $student['asg_id'] ?>" class="btn btn-info">Expire</a>
-                                    <?php
-                                }
-                                if ($student['asg_status'] == 0) { ?>
-
-                                        <a href="<?php
-                                                    $_SERVER['PHP_SELF']
-                                                    ?> ?statusActive=<?php echo  $student['asg_id'] ?>" class="btn btn-success">Active</a>
-                                    <?php
-                                }
-
-                                    ?> -->

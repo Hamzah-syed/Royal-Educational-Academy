@@ -1,10 +1,10 @@
 <?php
 include("../database_connection.php");
-include("../layout/layout.php");
+
 
 //demo session
 $_SESSION["faculty_id"] = 1;
-$_SESSION["roleId"] = 3;
+$_SESSION["roleId"] = 2;
 // $_SESSION["batchId"] = 6;
 
 
@@ -32,39 +32,6 @@ if (isset($_POST['asg_del'])) {
         echo "<script>alert('Assignment Deleted')</script>";
     }
 }
-// //status expire 
-// if (isset($_GET['statusExpire'])) {
-
-//     $StatusExpire = $_GET['statusExpire'];
-
-//     //assign assignment table data updated
-//     $UpdateStatusQuery =   "UPDATE  assign_assignment_tbl SET asg_status = 0 WHERE asg_id = '$StatusExpire'";
-//     $fire1 = mysqli_query($con, $UpdateStatusQuery)  or die('error: ' . mysqli_error($con));
-
-//     if ($fire1) {
-//         echo "<script>alert('Status Updated')</script>";
-//     }
-// }
-// //status Active 
-// if (isset($_GET['statusActive'])) {
-
-//     $statusActive = $_GET['statusActive'];
-
-//     //assign assignment table data updated
-//     $UpdateStatusQuery =   "UPDATE  assign_assignment_tbl SET asg_status = 1 WHERE asg_id = '$statusActive'";
-//     $fire1 = mysqli_query($con, $UpdateStatusQuery)  or die('error: ' . mysqli_error($con));
-
-//     if ($fire1) {
-//         echo "<script>alert('Status Updated')</script>";
-//     }
-// }
-
-
-
-// search
-// if (isset($_GET['search_Code'])) {
-//     $searchValue = $_GET['searchValue'];
-// }
 
 
 ?>
@@ -83,8 +50,10 @@ if (isset($_POST['asg_del'])) {
 </head>
 
 <body>
+<div id="wrapper">
+        <?php include '../layout/layout.php' ?>
     <div class="customcontainer  table-responsive">
-        <h1 class="text-center blackColor" style="margin-bottom:50px;">All Assignments</h1>
+        <h1 class="text-center blackColor" style="margin-bottom:50px;">Assigned Assignments</h1>
         <!-- <div class = "py-3" >
             <form class="d-flex align-items-center " method="GET">
 
@@ -222,8 +191,8 @@ if (!isset($_SESSION["batchId"])) { ?>
 
 
     </div>
+    </div>
 </body>
-
 </html>
 
 <!-- not avilabe -->
