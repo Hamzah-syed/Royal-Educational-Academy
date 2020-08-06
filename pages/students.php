@@ -1,6 +1,6 @@
 <?php
 include("../database_connection.php");
-include("../layout/layout.php");
+
 
 $_SESSION["roleId"] = 1;
 if ($_SESSION["roleId"] === 3 || $_SESSION["roleId"] === 2) {
@@ -35,6 +35,8 @@ if (isset($_GET['std_info_del'])) {
 </head>
 
 <body>
+<div id="wrapper">
+  <?php include '../layout/layout.php' ?>
     <div class="customcontainer  table-responsive">
     <h1 class="text-center blackColor" style="margin-bottom:50px;">All Students</h1>
 
@@ -79,7 +81,7 @@ if (isset($_GET['std_info_del'])) {
                                             $_SERVER['PHP_SELF']
                                             ?> ?std_del=<?php echo  $student['std_id'] ?>&std_info_del=<?php echo  $student['u_id'] ?>" class="btn btn-danger">Delete</a>
                                 <!-- update -->
-                                <a href="students/updateStudent.php ?std_update=<?php echo  $student['std_id'] ?>& std_info_update=<?php echo  $student['u_id'] ?>" class="btn  btn-primary">Edit</a>
+                                <a href="updateStudent.php ?std_update=<?php echo  $student['std_id'] ?>& std_info_update=<?php echo  $student['u_id'] ?>" class="btn  btn-primary">Edit</a>
 
 
                             </td>
@@ -101,10 +103,11 @@ if (isset($_GET['std_info_del'])) {
 
             </tbody>
         </table>
-        <a href="./students/addstudent.php">
+        <a href="./addstudent.php">
             <button class="btn btn-primary">Add Student</button>
         </a>
     </div>
+</div>
 </body>
 
 </html>
