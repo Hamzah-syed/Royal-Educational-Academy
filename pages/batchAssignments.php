@@ -104,7 +104,7 @@ if (!isset($_SESSION["batchId"])) { ?>
         <?php
         if (isset($_POST['SearchAsgByName']) || isset($_SESSION["batchId"])) { ?>
 
-            <table class="table table-striped ">
+            <table class="table table-striped  table-bordered">
 
                 <thead>
                     <tr>

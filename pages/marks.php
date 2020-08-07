@@ -61,15 +61,15 @@ if (isset($_POST['rollNumberSet'])) {
 <?php
 if (isset($_POST['rollNumberSet'])) { ?>
    
-    <table class="table table-striped ">
+    <table class="table table-striped  table-bordered">
     
         <thead>
             <tr>
                 <th scope="col">#id</th>
     
-                <th scope="col">Marks</th>
                 <th scope="col">Assignment</th>
                 <th scope="col">Submitted Assignment</th>
+                <th scope="col">Marks</th>
                 <th scope="col">Roll Number</th>
     
     

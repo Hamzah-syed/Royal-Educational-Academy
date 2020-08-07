@@ -49,7 +49,7 @@ if (isset($_GET['search_Code'])) {
                 <input type="submit" name="search_Code" id="search_Code" class="btn btn-info py-1 mx-2 form-control"style="width:100px" />
             </form>
         </div> -->
-            <table class="table table-striped ">
+            <table class="table table-striped  table-bordered">
 
                 <thead>
                     <tr>
@@ -112,7 +112,7 @@ if (isset($_GET['search_Code'])) {
 
                 </tbody>
             </table>
-            <a href="./batches/addBatch.php">
+            <a href="./addBatch.php">
                 <button class="btn btn-primary">Add Batch</button>
             </a>
         </div>

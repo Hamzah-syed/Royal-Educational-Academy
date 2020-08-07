@@ -59,7 +59,7 @@ if (isset($_GET['as_del'])) {
                 <input type="submit" name="search_Code" id="search_Code" class="btn btn-info py-1 mx-2 form-control"style="width:100px" />
             </form>
         </div> -->
-            <table class="table table-striped ">
+            <table class="table table-striped  table-bordered">
 
                 <thead>
                     <tr>

@@ -40,7 +40,7 @@ if (isset($_GET['std_info_del'])) {
     <div class="customcontainer  table-responsive">
     <h1 class="text-center blackColor" style="margin-bottom:50px;">All Students</h1>
 
-        <table class="table table-striped ">
+        <table class="table table-striped  table-bordered">
 
             <thead>
                 <tr>
