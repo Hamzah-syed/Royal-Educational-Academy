@@ -1,5 +1,5 @@
-<?php 
-session_start();
+<?php
+
 if (!isset($_SESSION["userName"])) {
   header("Location:./index.php");
 }
@@ -49,45 +49,54 @@ if (!isset($_SESSION["userName"])) {
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-      Users
-    </div>
+    <?php
+    if ($_SESSION["roleId"] == 1) { ?>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-user-graduate"></i>
-        <span>Students</span>
-      </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Students Details</h6>
-          <a class="collapse-item" href="./students.php">Students</a>
-          <a class="collapse-item" href="./addStudent.php">Add Students</a>
-        </div>
+      <div class="sidebar-heading">
+        Users
       </div>
-    </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-        <i class="fas fa-fw fa-wrench"></i>
-        <span>Utilities</span>
-      </a>
-      <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" href="utilities-color.html">Colors</a>
-          <a class="collapse-item" href="utilities-border.html">Borders</a>
-          <a class="collapse-item" href="utilities-animation.html">Animations</a>
-          <a class="collapse-item" href="utilities-other.html">Other</a>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-user-graduate"></i>
+          <span>Students</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Students Details</h6>
+            <a class="collapse-item" href="./students.php">Students</a>
+            <a class="collapse-item" href="./addStudent.php">Add Students</a>
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Utilities</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Colors</a>
+            <a class="collapse-item" href="utilities-border.html">Borders</a>
+            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+            <a class="collapse-item" href="utilities-other.html">Other</a>
+          </div>
+        </div>
+      </li>
 
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+    <?php
+    } else {
+    ?>
+      <div></div>
+    <?php
+    }
+    ?>
     <!-- Heading -->
     <div class="sidebar-heading">
       Working
@@ -102,35 +111,98 @@ if (!isset($_SESSION["userName"])) {
       <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Assignments Details:</h6>
-          <a class="collapse-item" href="./assignment.php">Assignments</a>
-          <a class="collapse-item" href="./add_assignment.php">Add Assignment</a>
-          <a class="collapse-item" href="./submitAsg.php">Submit Assignment</a>
 
-          <div class="collapse-divider">
-            <h6 class="collapse-header">Assign Assignments:</h6>
-            <a class="collapse-item" href="./assignedAssignment.php">Assign Assignments</a>
-          </div>
+          <?php
+          if ($_SESSION["roleId"] == 2 || $_SESSION["roleId"] == 1) { ?>
+
+            <a class="collapse-item" href="./assignment.php">Assignments</a>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+          <?php
+          if ($_SESSION["roleId"] == 2) { ?>
+
+            <a class="collapse-item" href="./add_assignment.php">Add Assignment</a>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+          <?php
+          if ($_SESSION["roleId"] == 3) { ?>
+
+            <a class="collapse-item" href="./submitAsg.php">Submit Assignment</a>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+          <?php
+          if ($_SESSION["roleId"] == 2) { ?>
+
+            <div class="collapse-divider">
+              <h6 class="collapse-header">Assign Assignments:</h6>
+              <a class="collapse-item" href="./assignedAssignment.php">Assign Assignments</a>
+            </div>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+
           <div class="collapse-divider">
             <h6 class="collapse-header">Assignments List:</h6>
 
             <a class="collapse-item" href="./batchAssignments.php">Batch Assignments</a>
-            <a class="collapse-item" href="./submittedAsgList.php">Submitted Assignments</a>
+            <?php
+          if ($_SESSION["roleId"] == 2) { ?>
+
+            <div class="collapse-divider">
+              <a class="collapse-item" href="./submittedAsgList.php">Submitted Assignments</a>
+            </div>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
           </div>
         </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-chalkboard-teacher"></i>
-        <span>Batches</span>
-      </a>
-      <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Batches</h6>
-          <a class="collapse-item" href="./batches.php">All Batches</a>
-          <a class="collapse-item" href="./addBatch.php">Add Batch</a>
+    <?php
+    if ($_SESSION["roleId"] == 1) { ?>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>Batches</span>
+        </a>
+
+        <div id="collapsethree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Batches</h6>
+            <a class="collapse-item" href="./batches.php">All Batches</a>
+            <a class="collapse-item" href="./addBatch.php">Add Batch</a>
+          </div>
         </div>
-      </div>
-    </li>
+      </li>
+    <?php
+    } else {
+    ?>
+      <span></span>
+    <?php
+    }
+    ?>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
@@ -171,7 +243,7 @@ if (!isset($_SESSION["userName"])) {
           <i class="fa fa-bars"></i>
         </button>
 
-      
+
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
 
@@ -305,14 +377,14 @@ if (!isset($_SESSION["userName"])) {
           <!-- Nav Item - User Information -->
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform:capitalize;"><?php echo $_SESSION["userName"];?></span>
-              <img class="img-profile rounded-circle" src="../assets/images/profilePic.png" width="60px" height="60px" >
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform:capitalize;"><?php echo $_SESSION["userName"]; ?></span>
+              <img class="img-profile rounded-circle" src="../assets/images/profilePic.png" width="60px" height="60px">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              
-         
-              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+
+
+              <a class="dropdown-item" href="./logout.php">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
               </a>

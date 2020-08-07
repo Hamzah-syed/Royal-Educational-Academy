@@ -1,7 +1,10 @@
 <?php
 //connection
 include("../database_connection.php");
-
+session_start();
+if ($_SESSION["roleId"]==3) {
+    header("Location:./dashboard.php");
+ }
 
 //fetch data of particular id 
 if (isset($_GET['std_id'])) {
@@ -54,7 +57,7 @@ if (isset($_POST['marksAdd'])) {
     <div id="wrapper">
         <?php include '../layout/layout.php' ?>
         <form class="customcontainer" name="addStudent" id="addAdmin" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
-            <h1>Edit Students</h1>
+            <h1>Add Marks</h1>
 
 
 

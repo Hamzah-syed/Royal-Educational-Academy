@@ -1,13 +1,12 @@
 <?php
 include("../database_connection.php");
 
-
+session_start();
 //demo session
-$_SESSION["faculty_id"] = 1;
-$_SESSION["roleId"] = 2;
 
 
-if ($_SESSION["roleId"] === 3) {
+
+if ($_SESSION["roleId"] == 3) {
     header("Location:./dashboard.php");
 }
 

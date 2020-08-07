@@ -1,6 +1,10 @@
 <?php
 include("../database_connection.php");
 
+
+session_start();
+
+
 //search
 if (isset($_POST['rollNumberSet'])) {
     // if ($_POST['searchByBatch'] == "notSet") {
@@ -31,7 +35,7 @@ if (isset($_POST['rollNumberSet'])) {
     <div id="wrapper">
         <?php include '../layout/layout.php' ?>
         <div class="customcontainer  table-responsive">
-            <h1 class="text-center blackColor" style="margin-bottom:50px;">Marks</h1>
+            <h1 class="text-center blackColor" style="margin-bottom:50px;">Result</h1>
 
 
             <form name="serachByBatch" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" class="py-4">

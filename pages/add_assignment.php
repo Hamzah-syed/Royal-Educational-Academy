@@ -1,14 +1,14 @@
 <?php
+
 //connection
 include("../database_connection.php");
 
-
 // demo session
+session_start();
 
-$_SESSION["faculty_id"] = 2;
-$_SESSION["roleId"] = 1;
 
-if ($_SESSION["roleId"] === 3 || $_SESSION["roleId"] === 1) {
+
+if ($_SESSION["roleId"] == 3 || $_SESSION["roleId"] == 1) {
     header("Location:./dashboard.php");
 }
 

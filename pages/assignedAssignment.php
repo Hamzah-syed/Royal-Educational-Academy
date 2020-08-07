@@ -1,11 +1,11 @@
 <?php
 //connection
 include("../database_connection.php");
+session_start();
 
-
-// demo session
-//demo session
-$_SESSION["faculty_id"] = 2;
+if ($_SESSION["roleId"] == 3 || $_SESSION["roleId"] == 1) {
+    header("Location:./dashboard.php");
+}
 
 
 if (isset($_POST['asg_assign'])) {
@@ -65,7 +65,7 @@ if (isset($_POST['asg_assign'])) {
 
                     <option disabled> Select Assignment By Title </option>;
                     <?php
-                    $sql = mysqli_query($con, "SELECT assignments_tbl.as_id, assignments_tbl.as_title FROM assignments_tbl");
+                    $sql = mysqli_query($con, "SELECT assignments_tbl.as_id, assignments_tbl.as_title FROM assignments_tbl WHERE assignments_tbl.as_faculty_fk ='$_SESSION[faculty_id]'");
                     $row = mysqli_num_rows($sql);
                     while ($row = mysqli_fetch_assoc($sql)) { ?>
 

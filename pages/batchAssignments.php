@@ -1,11 +1,7 @@
 <?php
 include("../database_connection.php");
 
-
-//demo session
-$_SESSION["faculty_id"] = 1;
-$_SESSION["roleId"] = 2;
-// $_SESSION["batchId"] = 6;
+session_start();
 
 
 //search

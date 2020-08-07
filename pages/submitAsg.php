@@ -1,12 +1,10 @@
 <?php
 include("../database_connection.php");
 
-
-//demo session
-$_SESSION["faculty_id"] = 1;
-$_SESSION["student_id"] = 23;
-$_SESSION["roleId"] = 3;
-$_SESSION["batchId"] = 7;
+session_start();
+if ($_SESSION["roleId"] == 1 || $_SESSION["roleId"]==2) {
+    header("Location:./dashboard.php");
+}
 
 
 

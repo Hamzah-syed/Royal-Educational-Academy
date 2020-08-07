@@ -17,23 +17,23 @@ if (isset($_POST['loginSubmit'])) {
   $row = mysqli_num_rows($fire);
   if ($row==1) {
     $data = mysqli_fetch_array($fire);
-    echo $_SESSION["userName"] = $data['u_name'];
-    echo $_SESSION["rolesId"] = $data['r_id'];
+    $_SESSION["userName"] = $data['u_name'];
+    $_SESSION["roleId"] = $data['r_id'];
 
-    if ($_SESSION["rolesId"] == 2) {
+    if ($_SESSION["roleId"] == 2) {
     
       $query = "SELECT faculty_tbl.fac_id  FROM faculty_tbl,users_tbl  WHERE faculty_tbl.fac_info_fk = users_tbl.u_id   ";
       $fire2 =  mysqli_query($con, $query);
       $Facdata = mysqli_fetch_array($fire2);
-      echo $_SESSION["faculty_id"] = $Facdata['fac_id'];
+       $_SESSION["faculty_id"] = $Facdata['fac_id'];
     }
-    if ($_SESSION["rolesId"] == 3) {
-      echo "welcome";
+    if ($_SESSION["roleId"] == 3) {
+       "welcome";
       $query = "SELECT students_tbl.std_id,students_tbl.std_batch_fk FROM students_tbl ,users_tbl  WHERE students_tbl.std_info_fk = users_tbl.u_id   ";
       $fire3 =  mysqli_query($con, $query);
       $stdData = mysqli_fetch_array($fire3);
-      echo $_SESSION["student_id"] = $stdData['std_id'];
-      echo $_SESSION["batchId"] = $stdData['std_batch_fk'];
+      $_SESSION["student_id"] = $stdData['std_id'];
+       $_SESSION["batchId"] = $stdData['std_batch_fk'];
     }
     
     header("Location:./dashboard.php");

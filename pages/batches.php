@@ -2,9 +2,10 @@
 include("../database_connection.php");
 
 
-//demo session
-$_SESSION["roleId"] = 1;
-if ($_SESSION["roleId"] === 3 || $_SESSION["roleId"] === 2) {
+session_start();
+
+
+if ($_SESSION["roleId"] == 3 || $_SESSION["roleId"] == 2) {
     header("Location:./dashboard.php");
 }
 
@@ -112,9 +113,7 @@ if (isset($_GET['search_Code'])) {
 
                 </tbody>
             </table>
-            <a href="./addBatch.php">
-                <button class="btn btn-primary">Add Batch</button>
-            </a>
+            
         </div>
     </div>
 </body>

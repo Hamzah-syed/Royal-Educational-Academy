@@ -2,6 +2,11 @@
 //connection
 include("../database_connection.php");
 
+session_start();
+
+if ($_SESSION["roleId"] == 3 || $_SESSION["roleId"] == 2) {
+    header("Location:./dashboard.php");
+}
 
 
 if (isset($_POST['stdAddSubmit'])) {
