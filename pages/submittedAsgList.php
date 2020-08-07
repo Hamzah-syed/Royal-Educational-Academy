@@ -132,9 +132,9 @@ if (isset($_GET['as_del'])) {
                         <?php
 
                         if ($_SESSION["roleId"] == 2) {
-                            $AllAsgsQuery = "SELECT submitted_asg_tbl.subAs_id, submitted_asg_tbl.subAs_date, assignments_tbl.as_title, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file, subject_tbl.subject_name,assign_assignment_tbl.asg_due_date  FROM   students_tbl, submitted_asg_tbl,assign_assignment_tbl,assignments_tbl,subject_tbl WHERE students_tbl.std_id =submitted_asg_tbl.subAs_student_fk AND assign_assignment_tbl.asg_id =submitted_asg_tbl.subAs_assignaAssignment_fk   AND assign_assignment_tbl.asg_batch_fk =  '$searchValue' AND assignments_tbl.as_id =assign_assignment_tbl.asg_assignment_fk  AND subject_tbl.subject_id =assignments_tbl.as_subject_fk  AND assignments_tbl.as_faculty_fk = $_SESSION[faculty_id]  ";
+                            $AllAsgsQuery = "SELECT submitted_asg_tbl.subAs_id, students_tbl.std_id, submitted_asg_tbl.subAs_date, assignments_tbl.as_title, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file, subject_tbl.subject_name,assign_assignment_tbl.asg_due_date,assign_assignment_tbl.asg_id  FROM   students_tbl, submitted_asg_tbl,assign_assignment_tbl,assignments_tbl,subject_tbl WHERE students_tbl.std_id =submitted_asg_tbl.subAs_student_fk AND assign_assignment_tbl.asg_id =submitted_asg_tbl.subAs_assignaAssignment_fk   AND assign_assignment_tbl.asg_batch_fk =  '$searchValue' AND assignments_tbl.as_id =assign_assignment_tbl.asg_assignment_fk  AND subject_tbl.subject_id =assignments_tbl.as_subject_fk  AND assignments_tbl.as_faculty_fk = $_SESSION[faculty_id]  ";
                         } else if ($_SESSION["roleId"] == 1) {
-                            $AllAsgsQuery = "SELECT submitted_asg_tbl.subAs_id, submitted_asg_tbl.subAs_date, assignments_tbl.as_title, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file, subject_tbl.subject_name,assign_assignment_tbl.asg_due_date,users_tbl.u_name  FROM   students_tbl, submitted_asg_tbl,assign_assignment_tbl,assignments_tbl,subject_tbl,faculty_tbl, users_tbl WHERE students_tbl.std_id =submitted_asg_tbl.subAs_student_fk AND assign_assignment_tbl.asg_id =submitted_asg_tbl.subAs_assignaAssignment_fk   AND assign_assignment_tbl.asg_batch_fk =  '$searchValue' AND assignments_tbl.as_id =assign_assignment_tbl.asg_assignment_fk  AND subject_tbl.subject_id =assignments_tbl.as_subject_fk AND faculty_tbl.fac_id = assignments_tbl.as_faculty_fk AND users_tbl.u_id = faculty_tbl.fac_info_fk";
+                            $AllAsgsQuery = "SELECT submitted_asg_tbl.subAs_id, students_tbl.std_id, submitted_asg_tbl.subAs_date, assignments_tbl.as_title, students_tbl.std_rollNumber,submitted_asg_tbl.subAs_file, subject_tbl.subject_name,assign_assignment_tbl.asg_due_date,users_tbl.u_name,assign_assignment_tbl.asg_id  FROM   students_tbl, submitted_asg_tbl,assign_assignment_tbl,assignments_tbl,subject_tbl,faculty_tbl, users_tbl WHERE students_tbl.std_id =submitted_asg_tbl.subAs_student_fk AND assign_assignment_tbl.asg_id =submitted_asg_tbl.subAs_assignaAssignment_fk   AND assign_assignment_tbl.asg_batch_fk =  '$searchValue' AND assignments_tbl.as_id =assign_assignment_tbl.asg_assignment_fk  AND subject_tbl.subject_id =assignments_tbl.as_subject_fk AND faculty_tbl.fac_id = assignments_tbl.as_faculty_fk AND users_tbl.u_id = faculty_tbl.fac_info_fk";
                         }
 
 
@@ -167,6 +167,9 @@ if (isset($_GET['as_del'])) {
                                         <a href="<?php
                                                     $_SERVER['PHP_SELF']
                                                     ?> ?as_del=<?php echo  $student['as_id'] ?>&as_del_img=<?php echo  $student['as_file_path'] ?>" class="btn btn-danger">Delete</a>
+                                        <!-- update -->
+                                        <a href="addmarks.php ?std_id=<?php echo  $student['std_id'] ?>& submittedAsgId=<?php echo  $student['subAs_id'] ?>& assignedAsgId=<?php echo  $student['asg_id'] ?>" class="btn  btn-primary">Set Marks</a>
+
 
                                     </td>
 
