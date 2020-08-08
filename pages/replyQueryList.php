@@ -68,7 +68,7 @@ if (isset($_GET['query_del'])) {
                             <p class=" card-text"><b>Reply: </b><?php echo  $query['rep_text'] ?></p>
 
                             <!-- update -->
-                            <a class="btn btn-primary" href="askQuery.php">Ask Anuthing Else</a>
+                            <a class="btn btn-primary" href="askQuery.php">Ask Anything Else</a>
 
 
                         </div>

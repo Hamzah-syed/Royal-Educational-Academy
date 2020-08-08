@@ -57,6 +57,34 @@ if (!isset($_SESSION["userName"])) {
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseadmin" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-user-cog"></i>
+          <span>Admins</span>
+        </a>
+        <div id="collapseadmin" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Admin Details</h6>
+            <a class="collapse-item" href="./allAdmins.php">Admins</a>
+            <a class="collapse-item" href="./addAdmin.php">Add Admin</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefac" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>Faculty</span>
+        </a>
+        <div id="collapsefac" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Faculty Details</h6>
+            <a class="collapse-item" href="./students.php">Students</a>
+            <a class="collapse-item" href="./addStudent.php">Add Students</a>
+          </div>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-graduate"></i>
@@ -67,23 +95,6 @@ if (!isset($_SESSION["userName"])) {
             <h6 class="collapse-header">Students Details</h6>
             <a class="collapse-item" href="./students.php">Students</a>
             <a class="collapse-item" href="./addStudent.php">Add Students</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
           </div>
         </div>
       </li>
@@ -206,7 +217,7 @@ if (!isset($_SESSION["userName"])) {
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefoure" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-chalkboard-teacher"></i>
+        <i class="fas fa-comments"></i>
         <span>Feedback/Question</span>
       </a>
 
