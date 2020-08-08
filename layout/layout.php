@@ -259,9 +259,9 @@ if (!isset($_SESSION["userName"])) {
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
+      <a class="nav-link" href="FAQ.php">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQ</span></a>
     </li>
 
     <!-- Divider -->
