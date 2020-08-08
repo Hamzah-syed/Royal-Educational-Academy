@@ -19,7 +19,7 @@ if (!isset($_SESSION["userName"])) {
 
   <!-- Custom styles for this template-->
   <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-  <title>Document</title>
+  <title>Royal Learning Academy</title>
 </head>
 
 <body>
@@ -203,6 +203,41 @@ if (!isset($_SESSION["userName"])) {
     <?php
     }
     ?>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefoure" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>Feedback/Question</span>
+      </a>
+
+      <div id="collapsefoure" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Queries</h6>
+          <?php
+          if ($_SESSION["roleId"] == 3) { ?>
+            <a class="collapse-item" href="./askQuery.php">Feedback/Question Form</a>
+            <a class="collapse-item" href="./replyQueryList.php">Feedback/Question Reply</a>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+          <?php
+          if ($_SESSION["roleId"] == 1 || $_SESSION["roleId"] == 2) { ?>
+            <a class="collapse-item" href="./queriesList.php">Feedbacks/Questions List</a>
+          <?php
+          } else {
+          ?>
+            <span></span>
+          <?php
+          }
+          ?>
+        </div>
+      </div>
+    </li>
+
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">

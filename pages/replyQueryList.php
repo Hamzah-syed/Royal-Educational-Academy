@@ -3,10 +3,10 @@ include("../database_connection.php");
 
 
 session_start();
-if ($_SESSION["roleId"] == 3) {
+
+if ($_SESSION["roleId"] == 1 || $_SESSION["roleId"] == 2) {
     header("Location:./dashboard.php");
 }
-
 //Delete Data
 if (isset($_GET['query_del'])) {
 
@@ -27,7 +27,7 @@ if (isset($_GET['query_del'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css -->
     <link rel="stylesheet" href="../assets/css/main.css">
-    <title>Queries</title>
+    <title>Queries Reply</title>
 
 </head>
 
@@ -35,7 +35,7 @@ if (isset($_GET['query_del'])) {
     <div id="wrapper">
         <?php include '../layout/layout.php' ?>
         <div class="customcontainer  table-responsive">
-            <h1 class="text-center blackColor" style="margin-bottom:50px;">All Queries</h1>
+            <h1 class="text-center blackColor" style="margin-bottom:50px;">Queries Replies</h1>
             <!-- <div class = "py-3" >
             <form class="d-flex align-items-center " method="GET">
 
@@ -50,8 +50,8 @@ if (isset($_GET['query_del'])) {
 
             <?php
 
-            $AllStudentsQuery = "SELECT query_tbl.q_id , query_tbl.q_status, query_tbl.q_text ,users_tbl.u_name  FROM query_tbl , students_tbl , users_tbl WHERE  students_tbl.std_id = query_tbl.q_std_fk  AND users_tbl.u_id =  students_tbl.std_info_fk AND query_tbl.q_status = 1";
-            $fire = mysqli_query($con, $AllStudentsQuery) or die("data not found " . mysqli_error($con));
+            $AllReplyQuery = "SELECT reply_tbl.rep_id ,query_tbl.q_id, reply_tbl.rep_text,query_tbl.q_text FROM reply_tbl, query_tbl  WHERE  query_tbl.q_id = reply_tbl.rep_query_fk  AND query_tbl.q_std_fk = '$_SESSION[student_id]' ";
+            $fire = mysqli_query($con, $AllReplyQuery) or die("data not found " . mysqli_error($con));
 
             // condition that if data rows is greater than 0
             if (mysqli_num_rows($fire) > 0) {
@@ -61,17 +61,15 @@ if (isset($_GET['query_del'])) {
 
                     <div class="card my-4">
                         <div class="card-header" style="text-transform: capitalize;">
-                            Query id #<?php echo $query['q_id'] ?>
+                            Question id #<?php echo $query['q_id'] ?>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-transform: capitalize;"><?php echo $query['u_name'] ?></h5>
-                            <p class=" card-text"><?php echo  $query['q_text'] ?></p>
+                            <h5 class="card-title" style="text-transform: capitalize;"> <b>Your Text:</b> <?php echo $query['q_text'] ?></h5>
+                            <p class=" card-text"><b>Reply: </b><?php echo  $query['rep_text'] ?></p>
 
                             <!-- update -->
-                            <a class="btn btn-primary" href="queryReply.php ?q_id=<?php echo  $query['q_id'] ?>">Reply</a>
-                            <a href="<?php
-                                        $_SERVER['PHP_SELF']
-                                        ?>?query_del=<?php echo  $query['q_id'] ?>" class="btn btn-danger">Delete</a>
+                            <a class="btn btn-primary" href="askQuery.php">Ask Anuthing Else</a>
+
 
                         </div>
                     </div>
@@ -81,7 +79,7 @@ if (isset($_GET['query_del'])) {
                 <tr>
 
 
-                    <<h3 class="py-4 text-center">There is no query</h3>
+                    <<h3 class="py-4 text-center">There is no query reply</h3>
 
                 </tr>
             <?php

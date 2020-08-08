@@ -36,7 +36,7 @@ if (isset($_POST['querySybmit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student</title>
+    <title>Ask Query</title>
     <!-- css -->
     <link rel="stylesheet" href="../assets/css/main.css">
 </head>
