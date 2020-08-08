@@ -24,7 +24,7 @@ if (isset($_POST['batchAddSubmit'])) {
 
 
     if ($fire1) {
-        header("Location:../batches.php");
+        header("Location:./batches.php");
     }
     // }
 }

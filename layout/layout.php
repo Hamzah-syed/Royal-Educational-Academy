@@ -165,18 +165,18 @@ if (!isset($_SESSION["userName"])) {
 
             <a class="collapse-item" href="./batchAssignments.php">Batch Assignments</a>
             <?php
-          if ($_SESSION["roleId"] == 2) { ?>
+            if ($_SESSION["roleId"] == 2 || $_SESSION["roleId"] == 1) { ?>
 
-            <div class="collapse-divider">
-              <a class="collapse-item" href="./submittedAsgList.php">Submitted Assignments</a>
-            </div>
-          <?php
-          } else {
-          ?>
-            <span></span>
-          <?php
-          }
-          ?>
+              <div class="collapse-divider">
+                <a class="collapse-item" href="./submittedAsgList.php">Submitted Assignments</a>
+              </div>
+            <?php
+            } else {
+            ?>
+              <span></span>
+            <?php
+            }
+            ?>
           </div>
         </div>
     </li>

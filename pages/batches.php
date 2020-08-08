@@ -59,7 +59,7 @@ if (isset($_GET['search_Code'])) {
                         <th scope="col">Semester</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">Faculty</th>
-                        <th scope="col"></th>
+
 
                         <th scope="col"></th>
                     </tr>
@@ -113,7 +113,7 @@ if (isset($_GET['search_Code'])) {
 
                 </tbody>
             </table>
-            
+
         </div>
     </div>
 </body>
