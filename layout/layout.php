@@ -80,8 +80,8 @@ if (!isset($_SESSION["userName"])) {
         <div id="collapsefac" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Faculty Details</h6>
-            <a class="collapse-item" href="./students.php">Students</a>
-            <a class="collapse-item" href="./addStudent.php">Add Students</a>
+            <a class="collapse-item" href="./allFaculty.php">Faculty</a>
+            <a class="collapse-item" href="./addFaculty.php">Add Faculty Member</a>
           </div>
         </div>
       </li>

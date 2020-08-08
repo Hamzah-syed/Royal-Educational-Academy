@@ -20,7 +20,7 @@ if (isset($_POST['u_add_submit'])) {
     $addStdInfoQuery =   "INSERT INTO users_tbl(u_email,u_password,u_name,r_id_fk) VALUES('$u_email', '$u_password','$uName', 1)";
     $fire1 = mysqli_query($con, $addStdInfoQuery);
     $last_id = mysqli_insert_id($con);
-    $addStdQuery =   "INSERT INTO admin_tbl(ad_info_fk) VALUES('$last_id' )";
+    $addStdQuery =   "INSERT INTO admin_tbl(ad_info_fk) VALUES('$last_id')";
     $fire2 = mysqli_query($con, $addStdQuery) or die("data not inserted " . mysqli_error($con));;
 
 
