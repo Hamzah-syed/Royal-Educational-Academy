@@ -85,7 +85,7 @@ if (isset($_POST['asg_assign'])) {
 
                     <option disabled> Select Batch </option>;
                     <?php
-                    $sql = mysqli_query($con, "SELECT b_id, b_code From batch_tbl");
+                    $sql = mysqli_query($con, "SELECT  b_id, b_code From batch_tbl WHERE batch_tbl.b_faculty_fk = '$_SESSION[faculty_id]'");
                     $row = mysqli_num_rows($sql);
                     while ($row = mysqli_fetch_assoc($sql)) { ?>
 

@@ -18,22 +18,24 @@ if (isset($_POST['loginSubmit'])) {
   if ($row == 1) {
     $data = mysqli_fetch_array($fire);
     $_SESSION["userName"] = $data['u_name'];
+    $_SESSION["u_id"] = $data['u_id'];
     $_SESSION["roleId"] = $data['r_id'];
 
     if ($_SESSION["roleId"] == 2) {
 
-      $query = "SELECT faculty_tbl.fac_id  FROM faculty_tbl,users_tbl  WHERE faculty_tbl.fac_info_fk = users_tbl.u_id   ";
+      $query = "SELECT faculty_tbl.fac_id  FROM users_tbl,faculty_tbl  WHERE users_tbl.u_id =  '$_SESSION[u_id]'  AND faculty_tbl.fac_info_fk = users_tbl.u_id";
       $fire2 =  mysqli_query($con, $query);
       $Facdata = mysqli_fetch_array($fire2);
       $_SESSION["faculty_id"] = $Facdata['fac_id'];
     }
     if ($_SESSION["roleId"] == 3) {
       "welcome";
-      $query = "SELECT students_tbl.std_id,students_tbl.std_batch_fk FROM students_tbl ,users_tbl  WHERE students_tbl.std_info_fk = users_tbl.u_id   ";
+      $query = "SELECT students_tbl.std_id,students_tbl.std_batch_fk,students_tbl.std_rollNumber FROM students_tbl ,users_tbl  WHERE users_tbl.u_id =  '$_SESSION[u_id]'  AND students_tbl.std_info_fk = users_tbl.u_id";
       $fire3 =  mysqli_query($con, $query);
       $stdData = mysqli_fetch_array($fire3);
       $_SESSION["student_id"] = $stdData['std_id'];
       $_SESSION["batchId"] = $stdData['std_batch_fk'];
+      $_SESSION["rollNumber"] = $stdData['std_rollNumber'];
     }
 
     header("Location:./dashboard.php");
@@ -70,13 +72,15 @@ if (isset($_POST['loginSubmit'])) {
 </head>
 
 <body>
-  <div class="bg-primary" style="width: 100%; height:100vh;display:flex" class="d-flex align-content-center flex-column">
-    <div class="container ">
 
+  <div class="bg-primary" style="width: 100%; height:100vh;display:flex" class="d-flex align-content-center flex-column">
+
+    <div class="container ">
       <!-- Outer Row -->
       <div style="width: 100%;height:100vh" class="row justify-content-center align-items-center">
 
         <div class="col-xl-6 col-lg-6 col-md-9">
+          <h1 style="color: white;padding-bottom:30px" class="text-center"> <b> Royal Learning Academy</b></h1>
 
           <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">

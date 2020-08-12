@@ -292,7 +292,7 @@ if (!isset($_SESSION["userName"])) {
                                                                       } elseif ($_SESSION["roleId"] == 2) {
                                                                         echo "Faculty";
                                                                       } elseif ($_SESSION["roleId"] == 3) {
-                                                                        echo "Student";
+                                                                        echo $_SESSION["rollNumber"];
                                                                       }
                                                                       ?> </p>
         </div>
