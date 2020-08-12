@@ -81,7 +81,7 @@ if (isset($_GET['query_del'])) {
                 <tr>
 
 
-                    <<h3 class="py-4 text-center">There is no query</h3>
+                    <h3 class="py-4 text-center">There is no query</h3>
 
                 </tr>
             <?php

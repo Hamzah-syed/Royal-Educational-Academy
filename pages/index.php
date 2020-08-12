@@ -3,7 +3,7 @@
 session_start();
 include("../database_connection.php");
 
-if (isset($_SESSION["rolesId"])) {
+if (isset($_SESSION["roleId"])) {
   header("Location:./dashboard.php");
 }
 
@@ -38,7 +38,8 @@ if (isset($_POST['loginSubmit'])) {
 
     header("Location:./dashboard.php");
   } else {
-    echo  "<script>alert('invalid email or password')</script>";
+    $_SESSION["err_msg"] = "invalid email or password";
+    // echo  "<script>alert('invalid email or password')</script>";
   }
 }
 ?>
@@ -87,6 +88,10 @@ if (isset($_POST['loginSubmit'])) {
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Login</h1>
                     </div>
+                    <?php if (isset($_SESSION['err_msg'])) {
+                      echo "<p class='text-danger text-center'> $_SESSION[err_msg]</p>";
+                      $_SESSION = null;
+                    } ?>
                     <form class="user" action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                       <div class="form-group">
                         <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>

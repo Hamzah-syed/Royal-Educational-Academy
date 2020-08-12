@@ -285,9 +285,17 @@ if (!isset($_SESSION["userName"])) {
       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
         <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-          <i class="fa fa-bars"></i>
-        </button>
+        <div id="" class="mr-3">
+          <p style="margin: 0;"><b class="text-primary">Welcome:</b> <?php
+                                                                      if ($_SESSION["roleId"] == 1) {
+                                                                        echo "Admin";
+                                                                      } elseif ($_SESSION["roleId"] == 2) {
+                                                                        echo "Faculty";
+                                                                      } elseif ($_SESSION["roleId"] == 3) {
+                                                                        echo "Student";
+                                                                      }
+                                                                      ?> </p>
+        </div>
 
 
         <!-- Topbar Navbar -->
